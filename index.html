@@ -5,12 +5,13 @@
     <title>Learn Angularjs</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
   </head>
-  <body ng-app>
+  <body ng-app ng-init="val1=6;val2=3">
     <div>John Doe</div>
     <div>5 + 5 = {{ 5+5 }}</div>
+    <div>5 + 5 = <span ng-bind="5 + 5">5 + 5</span></div>
     <div>
-      <label>val1</label><input type="text" ng-model="val1">
-      <label>val2</label><input type="text" ng-model="val2">
+      <label>val1</label><input type="text" ng-model="val1" value="{{val1}}">
+      <label>val2</label><input type="text" ng-model="val2" value="{{val2}}">
       <div>Val1 value: {{val1}}</div>
       <div>Val2 value: {{val2}}</div>
       <div>Product number: {{val1 * val2}}</div>
