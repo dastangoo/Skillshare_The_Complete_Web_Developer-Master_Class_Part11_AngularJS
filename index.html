@@ -20,9 +20,18 @@
           'Take Some Sleep'
         ],
         $scope.add_item = function() {
-          $scope.list.push($scope.get_item);
+          $scope.error_msg = "";
+          if (!$scope.get_item) {
+            return;
+          }
+          if ($scope.list.indexOf($scope.get_item) == -1) {
+            $scope.list.push($scope.get_item);
+          } else {
+            $scope.error_msg = "You're Duplicating things!";
+          }
         },
         $scope.del_item = function(del_id) {
+          $scope.error_msg = "";
           $scope.list.splice(del_id,1);
         }
       });
@@ -33,6 +42,7 @@
       </ul>
       <input type="text" ng-model="get_item">
       <button ng-click="add_item();">Add New Item</button>
+      <div>{{error_msg}}</div>
     </div>
   </body>
 </html>
