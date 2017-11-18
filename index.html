@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Learn Angularjs</title>
+    <title>To-Do List Project</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -10,21 +10,21 @@
     
   </head>
   <body>
-    <div ng-app="mod" ng-controller="con">
-      <ul>
-        <li ng-repeat="x in person">
-          {{x.Name + ', ' + x.Age}}
-        </li>
-      </ul>
-      <div ng-include="'inc.html'"></div>
-    </div>
     <script>
-      var mod = angular.module('mod', []);
-      mod.controller('con', function($scope, $http) {
-        $http.get('db.php').then(function(response) {
-          $scope.person = response.data.person;
-        });
+      todolist = angular.module("todolist", []);
+      todolist.controller("t_con", function($scope) {
+        $scope.list = [
+          'Go Shopping',
+          'Buyting Laptops',
+          'Coming Back to Home',
+          'Take Some Sleep'
+        ]
       });
     </script>
+    <div ng-app="todolist" ng-controller="t_con">
+      <ul ng-repeat="x in list">
+        <li>{{x}}</li>
+      </ul>
+    </div>
   </body>
 </html>
