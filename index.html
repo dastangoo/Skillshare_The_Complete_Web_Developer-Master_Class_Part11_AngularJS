@@ -9,13 +9,28 @@
     <script src="js/bootstrap.js"></script>
     
   </head>
-  <body ng-app="con2" ng-controller="newCtrl2">
-    <input type="text" ng-model="val1">
-    <ul>
-      <li ng-repeat="x in people | filter:val1">
-        {{x}}
-      </li>
-    </ul>
-    <script src="app/controller.js"></script>
+  <body ng-app="con" ng-controller="newCtrl">
+    {{myLocation}}
+    <h1>
+      {{myHeader}}
+    </h1>
+    <div>{{time}}</div>
+    <script>
+      var con = angular.module("con", []);
+          con.controller('newCtrl', function($scope, $location, $timeout, $interval) {
+            
+            $scope.myLocation = $location.absUrl();
+            
+            $scope.myHeader = 'The is the Header';
+            $timeout(function() {
+              $scope.myHeader = "It's updated Header";
+            }, 1000);
+            
+            $scope.time = new Date().toLocaleTimeString();
+            $interval(function() {
+              $scope.time = new Date().toLocaleTimeString();
+            }, 1);
+          });
+    </script>
   </body>
 </html>
