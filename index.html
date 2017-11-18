@@ -14,7 +14,14 @@
       <li ng-repeat="x in people">{{x.name}}</li>
     </ul>
     <table class="table table-striped table-hover table-bordered text-center" border="1">
+      <tr>
+        <th>S.no</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Skill</th>
+      </tr>
       <tr ng-repeat="x in people">
+        <td>{{$index + 1}}</td>
         <td>{{x.name}}</td>
         <td>{{x.age}}</td>
         <td>{{x.skill}}</td>
