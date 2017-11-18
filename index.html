@@ -9,28 +9,22 @@
     <script src="js/bootstrap.js"></script>
     
   </head>
-  <body ng-app="con" ng-controller="newCtrl">
-    {{myLocation}}
-    <h1>
-      {{myHeader}}
-    </h1>
-    <div>{{time}}</div>
+  <body>
+    <div ng-app="mod" ng-controller="con">
+      <ul>
+        <li ng-repeat="x in person">
+          {{x.Name + ', ' + x.Age}}
+        </li>
+      </ul>
+      <div ng-include="'inc.html'"></div>
+    </div>
     <script>
-      var con = angular.module("con", []);
-          con.controller('newCtrl', function($scope, $location, $timeout, $interval) {
-            
-            $scope.myLocation = $location.absUrl();
-            
-            $scope.myHeader = 'The is the Header';
-            $timeout(function() {
-              $scope.myHeader = "It's updated Header";
-            }, 1000);
-            
-            $scope.time = new Date().toLocaleTimeString();
-            $interval(function() {
-              $scope.time = new Date().toLocaleTimeString();
-            }, 1);
-          });
+      var mod = angular.module('mod', []);
+      mod.controller('con', function($scope, $http) {
+        $http.get('db.php').then(function(response) {
+          $scope.person = response.data.person;
+        });
+      });
     </script>
   </body>
 </html>
