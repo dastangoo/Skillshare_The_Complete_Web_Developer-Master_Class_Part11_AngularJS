@@ -5,28 +5,20 @@
     <title>Learn Angularjs</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
   </head>
-  <body>
-    <div ng-app="module1">
-      <!-- <my-Dir></my-Dir> -->
-      <!-- <div my-Dir></div> -->
-      <!-- <div class="my-Dir"></div> -->
-      <!-- directive: my-Dir -->
-    </div>
+  <body ng-app="con1" ng-controller="newCtrl">
+    <input type="text" ng-model="car1" placeholder="car1">
+    <input type="text" ng-model="car2" placeholder="car2">
+    <div>{{car1 + ' ' + car2}}</div>
+    <div>{{bothCars()}}</div>
     <script>
-      var modl1 = angular.module("module1", []);
-      
-      // We have to use the camelStyle to declare the directive name
-      modl1.directive('myDir', function() {
-        return {
-          // restrict: "E",
-          // restrict: "A",
-          // restrict: "C",
-          restrict: "M",
-          replace: true,
-          template: '<p>This is the newly created Directive!</p>'
-        };
+      var con1 = angular.module("con1", []);
+      con1.controller('newCtrl', function($scope) {
+        $scope.car1 = 'Toyota';
+        $scope.car2 = 'BMW';
+        $scope.bothCars = function() {
+          return $scope.car1 + ' ' + $scope.car1;
+        }
       });
     </script>
-
   </body>
 </html>
