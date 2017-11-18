@@ -21,12 +21,15 @@
         ],
         $scope.add_item = function() {
           $scope.list.push($scope.get_item);
+        },
+        $scope.del_item = function(del_id) {
+          $scope.list.splice(del_id,1);
         }
       });
     </script>
     <div ng-app="todolist" ng-controller="t_con">
       <ul>
-        <li ng-repeat="x in list">{{x}}</li>
+        <li ng-repeat="x in list">{{x}}<span ng-click="del_item($index);">&times;</span></li>
       </ul>
       <input type="text" ng-model="get_item">
       <button ng-click="add_item();">Add New Item</button>
